@@ -11,19 +11,23 @@ import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import org.junit.Assert.assertEquals
+import org.junit.Before
 import org.junit.Test
 
 
 class NavigationTests {
 
-    @Test
-    fun navigate_to_words_nav_component(){
+    private lateinit var navController: TestNavHostController
 
+    private lateinit var letterListScenario: FragmentScenario<LetterListFragment>
+
+    @Before
+    fun setUp(){
         //OBTENEMOS EL NAVCONTROLLER
-        val navController = TestNavHostController( ApplicationProvider.getApplicationContext() )
+        navController = TestNavHostController( ApplicationProvider.getApplicationContext() )
 
         //SE INICIALIZA EL FRAGMENT A TESTEAR, ES EQUIVALENTE  A ActivityScenarioRule
-        val letterListScenario : FragmentScenario<LetterListFragment> = launchFragmentInContainer<LetterListFragment>( themeResId = R.style.Theme_Words )
+        letterListScenario = launchFragmentInContainer<LetterListFragment>( themeResId = R.style.Theme_Words )
 
         //ESTAMOS ENTRANDO EN EL FRAGMENTO
         letterListScenario.onFragment { thisFragment ->
@@ -35,6 +39,11 @@ class NavigationTests {
             Navigation.setViewNavController( thisFragment.requireView() , navController )
 
         }
+
+    }
+
+    @Test
+    fun navigate_to_words_nav_component(){
 
         onView(
             withId(

@@ -62,9 +62,6 @@ class WordAdapter(
 
     override fun getItemCount(): Int = filteredWords.size
 
-    /**
-     * Creates new views with R.layout.item_view as its template
-     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordViewHolder {
         val layout = LayoutInflater
             .from(parent.context)
@@ -127,4 +124,5 @@ class WordAdapter(
             info.addAction(customClick)
         }
     }
+
 }

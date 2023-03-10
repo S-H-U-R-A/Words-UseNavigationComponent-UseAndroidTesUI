@@ -19,7 +19,6 @@ class WordListFragment : Fragment() {
     }
 
     private var _binding: FragmentWordListBinding? = null
-
     private val binding: FragmentWordListBinding
         get() = _binding!!
 
@@ -31,6 +30,7 @@ class WordListFragment : Fragment() {
         arguments?.let {
             letterId = it.getString(LETTER).toString()
         }
+
     }
 
     override fun onCreateView(
@@ -40,40 +40,31 @@ class WordListFragment : Fragment() {
     ): View? {
 
         _binding = FragmentWordListBinding.inflate(inflater, container, false)
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         /*
-
-        AQUI SE RECUPERABA EL VALOR DE EXTRAS DEL INTENT, PERO NO ES UNA BUENA PRACTICA
-
+        SE RECUPERABA EL VALOR DE EXTRAS DEL INTENT, PERO NO ES UNA BUENA PRACTICA
         val letterId: String = activity?.intent?.extras?.getString(LETTER).toString()
-
         */
 
         //RECYCLERVIEW
-
         val recyclerView: RecyclerView = binding.recyclerView
 
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.layoutManager = LinearLayoutManager( requireContext() )
 
-        recyclerView.adapter = WordAdapter(letterId, requireContext() )
+        recyclerView.adapter = WordAdapter( letterId, requireContext() )
 
         recyclerView.addItemDecoration(
             DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         )
 
         /*
-
         Esto cambiaba el titulo de la AppBar de la activity
-
         activity?.title = getString(R.string.detail_prefix) + " " + letterId
-
         */
 
     }

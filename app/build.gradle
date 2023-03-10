@@ -48,6 +48,10 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
+    //PREFERENCE DATASTORE
+    implementation "androidx.datastore:datastore-preferences:$data_store"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$life_cycle_ktx"
+
     //TEST
     androidTestImplementation "androidx.test.ext:junit:$android_test_junit"
     androidTestImplementation "androidx.test.espresso:espresso-core:$android_test_espresso"

@@ -6,6 +6,8 @@ buildscript {
         kotlin_version = "1.7.10"
         material_version = "1.7.0-alpha02"
         nav_version = "2.5.2"
+        data_store = "1.0.0"
+        life_cycle_ktx = "2.5.1"
 
         //TEST
         android_test_junit = "1.1.3"
